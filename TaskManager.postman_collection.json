@@ -1,0 +1,143 @@
+{
+  "info": {
+    "_postman_id": "31e252ca-dd93-4f5a-bd6a-0fc4d7fd5440",
+    "name": "TaskManager",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50352706",
+    "_collection_link": "https://go.postman.co/collection/50352706-31e252ca-dd93-4f5a-bd6a-0fc4d7fd5440?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "כל המשימות",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"לקנות מצרכים\",\r\n  \"priority\": \"Low\",\r\n  \"status\": \"Done\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5256/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5256",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "סינון לפי סטטוס",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"לקנות מצרכים\",\r\n  \"priority\": \"Low\",\r\n  \"status\": \"Done\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5256/api/tasks?status=Done",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5256",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "Done"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "משימה לפי מזהה",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"לקנות מצרכים\",\r\n  \"priority\": \"Low\",\r\n  \"status\": \"Done\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5256/api/tasks/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5256",
+          "path": [
+            "api",
+            "tasks",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "יצירת משימה",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"לקנות מצרכים\",\r\n  \"priority\": \"Low\",\r\n  \"status\": \"Done\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5256/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5256",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
