@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>המשימות שלי</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>המשימות שלי</h1>
+      <button id="new-task-btn" class="btn btn-primary">+ משימה חדשה</button>
+    </header>
+
+    <nav class="tabs" id="status-tabs">
+      <button class="tab active" data-status="">הכול</button>
+      <button class="tab" data-status="ToDo">לביצוע</button>
+      <button class="tab" data-status="InProgress">בתהליך</button>
+      <button class="tab" data-status="Done">הושלמו</button>
+    </nav>
+
+    <div class="toolbar">
+      <input type="search" id="search-input" placeholder="חיפוש משימה...">
+      <select id="sort-select">
+        <option value="dueDate">מיון: תאריך יעד</option>
+        <option value="priority">מיון: עדיפות</option>
+        <option value="created">מיון: תאריך יצירה</option>
+      </select>
+    </div>
+
+    <div id="error-banner" class="error-banner" hidden></div>
+    <ul id="task-list" class="task-list"></ul>
+    <p id="empty-message" class="empty-message" hidden>אין משימות להצגה</p>
+  </main>
+
+  <!-- טופס יצירה ועריכה -->
+  <dialog id="task-dialog">
+    <form id="task-form" novalidate>
+      <h2 id="form-title">משימה חדשה</h2>
+
+      <label for="title-input">כותרת *</label>
+      <input id="title-input" maxlength="100">
+      <p id="title-error" class="field-error" hidden></p>
+
+      <label for="description-input">תיאור</label>
+      <textarea id="description-input" rows="3"></textarea>
+
+      <div class="form-row">
+        <div>
+          <label for="status-input">סטטוס</label>
+          <select id="status-input">
+            <option value="ToDo">לביצוע</option>
+            <option value="InProgress">בתהליך</option>
+            <option value="Done">הושלמה</option>
+          </select>
+        </div>
+        <div>
+          <label for="priority-input">עדיפות</label>
+          <select id="priority-input">
+            <option value="Low">נמוכה</option>
+            <option value="Medium" selected>בינונית</option>
+            <option value="High">גבוהה</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="due-date-input">תאריך יעד</label>
+          <input type="date" id="due-date-input">
+        </div>
+        <div>
+          <label for="category-input">קטגוריה</label>
+          <select id="category-input">
+            <option value="">ללא קטגוריה</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="form-error" class="field-error" hidden></p>
+
+      <div class="dialog-actions">
+        <button type="submit" class="btn btn-primary">שמירה</button>
+        <button type="button" class="btn" id="cancel-form-btn">ביטול</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- פרטי משימה -->
+  <dialog id="details-dialog">
+    <div class="dialog-header">
+      <h2 id="details-title"></h2>
+      <button type="button" class="icon-btn" id="close-details-btn" aria-label="סגירה">✕</button>
+    </div>
+    <div id="details-badges" class="badges"></div>
+    <h3>תיאור</h3>
+    <p id="details-description"></p>
+    <h3>תאריכים</h3>
+    <p id="details-dates"></p>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-primary" id="details-edit-btn">עריכה</button>
+      <button type="button" class="btn btn-danger" id="details-delete-btn">מחיקה</button>
+    </div>
+  </dialog>
+
+  <!-- אישור מחיקה -->
+  <dialog id="delete-dialog">
+    <h2>למחוק את המשימה?</h2>
+    <p>המשימה תימחק לצמיתות ולא ניתן יהיה לשחזר אותה.</p>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-danger" id="confirm-delete-btn">מחיקה</button>
+      <button type="button" class="btn" id="cancel-delete-btn">ביטול</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
